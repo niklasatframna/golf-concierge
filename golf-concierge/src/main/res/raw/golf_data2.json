@@ -1,0 +1,611 @@
+[
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "G440 Max",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "G430 MAX 10K",
+    "year": 2024
+  },
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "G430 Max Alta",
+    "year": 2023
+  },
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "G440 Max Alta",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "G440 LST Alta",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "G440 LST Tour Chrome",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "G440 Max",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "G430 Max",
+    "year": 2023
+  },
+  {
+    "brand": "Ping",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "G440 LST",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "G430 LST",
+    "year": 2023
+  },
+  {
+    "brand": "Ping",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "PLD Anser 2D",
+    "year": 2024
+  },
+  {
+    "brand": "Ping",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "PLD Anser 2",
+    "year": 2023
+  },
+  {
+    "brand": "Ping",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "PLD Milled Ally Blue Onset",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "PLD Milled Anser",
+    "year": 2024
+  },
+  {
+    "brand": "Ping",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "G730",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "i530",
+    "year": 2024
+  },
+  {
+    "brand": "Ping",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "Blueprint S",
+    "year": 2025
+  },
+  {
+    "brand": "Ping",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "Blueprint T",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Air-X 2024",
+    "year": 2023
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Ds-Adapt Max-D",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Darkspeed X",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Ds-Adapt Max-K",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "Darkspeed Ls",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "Ds-Adapt Ls",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "DS-ADAPT Max",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "Darkspeed Max",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "DS-ADAPT LS",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "Darkspeed LS",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "LIMIT3D Agera",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "KING 3D Printed Agera",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "LIMIT3D PISTA",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "KING 3D Printed Putter",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "DS-ADAPT Max",
+    "year": 2025
+  },
+  {
+    "brand": "Cobra",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "Aerojet Irons",
+    "year": 2023
+  },
+  {
+    "brand": "Cobra",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "KING CB/MB Black Irons",
+    "year": 2024
+  },
+  {
+    "brand": "Cobra",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "KING Forged Tec",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "GT1",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "GT2",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "GT4",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "GT3",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "GT280 Mini Driver",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "TSR2",
+    "year": 2022
+  },
+  {
+    "brand": "Titleist",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "GT2",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "TSR3",
+    "year": 2022
+  },
+  {
+    "brand": "Titleist",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "Scotty Cameron Phantom",
+    "year": 2024
+  },
+  {
+    "brand": "Titleist",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "Scotty Cameron Studio Style",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "Scotty Cameron Select",
+    "year": 2023
+  },
+  {
+    "brand": "Titleist",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "Scotty Cameron Super Select",
+    "year": 2023
+  },
+  {
+    "brand": "Titleist",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "T350",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "T250",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "T100",
+    "year": 2025
+  },
+  {
+    "brand": "Titleist",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "T150",
+    "year": 2025
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Qi 35 Max Lite",
+    "year": 2025
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Qi10",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Qi 35",
+    "year": 2025
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Qi 35 Max",
+    "year": 2025
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "Qi10 LS",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "Qi 35 LS",
+    "year": 2025
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "Qi10",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "Stealth 2",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "Qi10 Tour",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "Stealth 2 Plus",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "TP Reserve",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "Spider Tour",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "TP Reserve",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "Spider Tour X",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "Qi",
+    "year": 2024
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "Stealth",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "P790",
+    "year": 2023
+  },
+  {
+    "brand": "TaylorMade",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "P770",
+    "year": 2023
+  },
+  {
+    "brand": "Callaway",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Elyte X",
+    "year": 2025
+  },
+  {
+    "brand": "Callaway",
+    "category": "DRIVER",
+    "subcategory": "gi",
+    "name": "Reva Rise",
+    "year": 2025
+  },
+  {
+    "brand": "Callaway",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Paradym Ai Smoke Max",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "DRIVER",
+    "subcategory": "el",
+    "name": "Rogue St Max 24",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "DRIVER",
+    "subcategory": "to",
+    "name": "Elyte Td",
+    "year": 2025
+  },
+  {
+    "brand": "Callaway",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "Paradym Ai Smoke Max",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "gi",
+    "name": "Paradym Ai Smoke Max HL",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "Paradym Ai Smoke Triple Diamond",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "FAIRWAY_WOOD",
+    "subcategory": "el",
+    "name": "Paradym Ai Smoke TD",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "Odyssey Ai-ONE Seven",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "PUTTER",
+    "subcategory": "gi",
+    "name": "Odyssey Ai-ONE",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "Odyssey Ai-ONE Milled",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "PUTTER",
+    "subcategory": "el",
+    "name": "Odyssey Ai-ONE Milled Two-Ball",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "Paradym Ai Smoke",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "IRON_SET",
+    "subcategory": "gi",
+    "name": "Apex Ai300",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "Apex Pro",
+    "year": 2024
+  },
+  {
+    "brand": "Callaway",
+    "category": "IRON_SET",
+    "subcategory": "el",
+    "name": "Apex CB",
+    "year": 2024
+  }
+]

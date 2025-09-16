@@ -1,0 +1,69 @@
+{
+    "currencyDenominations": [
+        {
+            "id": 1,
+            "value": 1,
+            "displayName": "1 kr",
+            "denominationType": "coin"
+        },
+        {
+            "id": 2,
+            "value": 2,
+            "displayName": "2 kr",
+            "denominationType": "coin"
+        },
+        {
+            "id": 3,
+            "value": 5,
+            "displayName": "5 kr",
+            "denominationType": "coin"
+        },
+        {
+            "id": 4,
+            "value": 10,
+            "displayName": "10 kr",
+            "denominationType": "coin"
+        },
+        {
+            "id": 5,
+            "value": 20,
+            "displayName": "20 kr",
+            "denominationType": "banknote"
+        },
+        {
+            "id": 6,
+            "value": 50,
+            "displayName": "50 kr",
+            "denominationType": "banknote"
+        },
+        {
+            "id": 7,
+            "value": 100,
+            "displayName": "100 kr",
+            "denominationType": "banknote"
+        },
+        {
+            "id": 8,
+            "value": 200,
+            "displayName": "200 kr",
+            "denominationType": "banknote"
+        },
+        {
+            "id": 9,
+            "value": 500,
+            "displayName": "500 kr",
+            "denominationType": "banknote"
+        },
+        {
+            "id": 10,
+            "value": 1000,
+            "displayName": "1000 kr",
+            "denominationType": "banknote"
+        }
+    ],
+    "appSettings": {
+        "version": "1.0.0",
+        "defaultCurrency": "SEK",
+        "locale": "sv-SE"
+    }
+}

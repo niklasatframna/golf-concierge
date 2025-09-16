@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+<!--
+    This is a sample backup descriptor.
+    You can specify which files to back up and which to exclude.
+    For more details, see the documentation at
+    https://developer.android.com/guide/topics/data/autobackup
+-->
+<!--
+    <include domain="sharedpref" path="."/>
+    <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content>

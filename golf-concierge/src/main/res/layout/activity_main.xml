@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Handicap Section -->
+        <TextView
+            android:id="@+id/handicapTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Handicap: 0"
+            android:textSize="18sp" />
+
+        <SeekBar
+            android:id="@+id/handicapSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="36"
+            android:progress="18"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Category Section with ChipGroup -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Category:"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/categoryChipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:layout_marginTop="8dp">
+            <!-- Chips will be added programmatically -->
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- Brand Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Brand:"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/brandSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"/>
+
+        <!-- Model Section -->
+        <TextView
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Model:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/modelSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"/>
+
+        <!-- More Info Section -->
+        <EditText
+            android:id="@+id/moreInfoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Any other preferences? (Optional)"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"/>
+
+        <!-- About -->
+        <TextView
+            android:id="@+id/aboutTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:padding="8dp"
+            android:text="About this App"
+            android:textColor="?attr/colorPrimary" />
+
+    </LinearLayout>
+</ScrollView>

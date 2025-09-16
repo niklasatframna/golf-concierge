@@ -1,0 +1,5 @@
+Generate a flat JSON list of the latest golf clubs from major brands for a mobile app's comparison tool.
+Focus on the following brands: Ping, Cobra, Titleist, TaylorMade, and Callaway.
+For each club, provide the following properties: "brand", "category" (from "DRIVER", "FAIRWAY_WOOD", "PUTTER", "IRON_SET"), "subcategory" (from "gi" for game improvement or "el" for low handicapper), "name", and "year".
+The list should include the two most recent models for each brand, category, and subcategory, with a focus on those released in 2024 and 2025.
+The output   must be a single JSON array, with each object in the array representing a single club. Do not include any additional text or prose.

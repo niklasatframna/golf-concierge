@@ -1,0 +1,40 @@
+{
+    "brands": [
+      {
+        "name": "Ping",
+        "models": [
+          { "category": "DRIVER", "name": "G430 MAX 10K", "year": 2024 },
+          { "category": "FAIRWAY_WOOD", "name": "G430 MAX", "year": 2023 },
+          { "category": "IRON_SET", "name": "i530", "year": 2024 },
+          { "category": "WEDGE", "name": "Glide Forged Pro", "year": 2023 }
+        ]
+      },
+      {
+        "name": "Cobra",
+        "models": [
+          { "category": "DRIVER", "name": "DARKSPEED Max", "year": 2024 },
+          { "category": "FAIRWAY_WOOD", "name": "DARKSPEED Max", "year": 2024 },
+          { "category": "IRON_SET", "name": "KING Forged Tec", "year": 2023 },
+          { "category": "WEDGE", "name": "Snakebite", "year": 2023 }
+        ]
+      },
+      {
+        "name": "Titleist",
+        "models": [
+          { "category": "DRIVER", "name": "TSR2", "year": 2022 },
+          { "category": "FAIRWAY_WOOD", "name": "TSR2", "year": 2022 },
+          { "category": "IRON_SET", "name": "T200", "year": 2023 },
+          { "category": "WEDGE", "name": "Vokey SM10", "year": 2024 }
+        ]
+      },
+      {
+        "name": "TaylorMade",
+        "models": [
+          { "category": "DRIVER", "name": "Qi10 Max", "year": 2024 },
+          { "category": "FAIRWAY_WOOD", "name": "Qi10", "year": 2024 },
+          { "category": "IRON_SET", "name": "P•790", "year": 2023 },
+          { "category": "WEDGE", "name": "MG4", "year": 2023 }
+        ]
+      }
+    ]
+  }
