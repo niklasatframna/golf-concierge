@@ -1,14 +1,15 @@
 # Golf Concierge 🏌️‍♂️
 
-Golf Concierge is an Android application designed to streamline the golf course experience. The app allows users to get personalized advice, check course conditions, and get real-time assistance using the power of generative AI.
+Golf Concierge is an Android application designed to help golfers make informed purchasing decisions. The app allows users to compare golf clubs across different major brands and categories, providing an AI-powered tool to assist in the buying process.
 
 ---
 
 ## Key Features
 
-* **AI-Powered Concierge**: Get instant, tailored advice on everything from golf rules to course strategy by interacting with a conversational AI.
-* **Real-time Assistance**: Receive immediate help with any questions you have while on the course.
-* **Seamless Integration**: The app provides a user-friendly interface that integrates complex AI technology into a simple and intuitive mobile experience.
+* **AI-Powered Club Comparison**: Ask the AI to compare specific golf clubs, providing detailed analysis of their features, pros, and cons.
+* **Brand and Category Filtering**: Easily filter clubs by major brands (e.g., Titleist, TaylorMade, Callaway) and categories (e.g., drivers, irons, putters).
+* **Informed Decision Making**: Get AI-generated insights to help you choose the best club for your specific needs, skill level, and budget.
+* **Intuitive Interface**: The app provides a simple and user-friendly interface that makes comparing clubs a quick and easy process.
 
 ---
 
