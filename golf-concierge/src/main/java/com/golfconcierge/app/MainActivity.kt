@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     // Data holders for state
     private var originalCategoryKeys: List<String> = emptyList()
     private var currentSelectedCategoryKey: String? = null
+    private var modelsForCurrentSpinner: List<Model> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -185,7 +186,7 @@ class MainActivity : AppCompatActivity() {
         if (brandName == null || categoryKey == null) {
             // Clear the model spinner if brand or category is not selected
             modelSpinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, emptyList())
-            modelSpinner.tag = emptyList<Model>() // Clear stored models
+            this.modelsForCurrentSpinner = emptyList() // Clear stored models
             Log.d("MainActivity", "Clearing model spinner (no brand or category specified).")
             return
         }
@@ -211,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         )
         modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // Layout for dropdown
         modelSpinner.adapter = modelAdapter
-        modelSpinner.tag = models // Store the actual List<Model> objects for use in continueButton
+        this.modelsForCurrentSpinner = models // Store the actual List<Model> objects for use in continueButton
     }
 
     private fun handleContinueClick() {
@@ -234,17 +235,17 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // Get selected model from modelSpinner's tag
-        val modelsFromTag = modelSpinner.tag as? List<Model> ?: emptyList()
-        val selectedModelFromSpinner: Model? = if (modelsFromTag.isNotEmpty() &&
+        // Get selected model from our class property, no casting needed
+        val modelsFromSpinner = this.modelsForCurrentSpinner
+        val selectedModel: Model? = if (modelsFromSpinner.isNotEmpty() &&
             modelSpinner.selectedItemPosition >= 0 &&
-            modelSpinner.selectedItemPosition < modelsFromTag.size) {
-            modelsFromTag[modelSpinner.selectedItemPosition]
+            modelSpinner.selectedItemPosition < modelsFromSpinner.size) {
+            modelsFromSpinner[modelSpinner.selectedItemPosition]
         } else {
             null
         }
 
-        if (selectedModelFromSpinner == null) {
+        if (selectedModel == null) {
             Toast.makeText(this, "Please select a model.", Toast.LENGTH_SHORT).show()
             Log.w("MainActivity", "Continue attempt with no model selected.")
             return
@@ -256,19 +257,19 @@ class MainActivity : AppCompatActivity() {
                 " Handicap=$handicap," +
                 " Category='$categoryToUse'," +
                 " Brand='$brandNameToUse'," +
-                " ModelName='${selectedModelFromSpinner.name}'," +
-                " ModelYear=${selectedModelFromSpinner.year}," +
-                " ModelSubCat='${selectedModelFromSpinner.subCategory}'," +
+                " ModelName='${selectedModel.name}'," +
+                " ModelYear=${selectedModel.year}," +
+                " ModelSubCat='${selectedModel.subCategory}'," +
                 " MoreInfo='$moreInfo'")
 
         val intent = Intent(this, CompareActivity::class.java).apply {
             putExtra("handicap", handicap)
             putExtra("brand1", brandNameToUse)
             putExtra("category", categoryToUse) // This is the main category key like "DRIVER"
-            putExtra("model1Name", selectedModelFromSpinner.name)
-            putExtra("model1Year", selectedModelFromSpinner.year)
+            putExtra("model1Name", selectedModel.name)
+            putExtra("model1Year", selectedModel.year)
             // Send subCategoryType from your Model data class
-            putExtra("model1SubCategory", selectedModelFromSpinner.subCategory)
+            putExtra("model1SubCategory", selectedModel.subCategory)
             // The old "model1Category" which was model.category is now handled by the main "category" extra.
             // If CompareActivity still expects model.category from the Model object itself, adjust as needed.
             putExtra("moreInfo", moreInfo)
