@@ -142,8 +142,9 @@ class CompareActivity : AppCompatActivity() {
             }
 
             val prompt = constructPrompt(
-                brand1Name, model1Name, model1SubCategory, model1Year,
-                selectedBrand2!!.name, selectedModel2!!.name, selectedModel2!!.subCategory, selectedModel2!!.year,
+                brand1Name, model1Name,
+                model1Year,
+                selectedBrand2!!.name, selectedModel2!!.name, selectedModel2!!.year,
                 handicap, category, moreInfo
             )
 
@@ -174,8 +175,8 @@ class CompareActivity : AppCompatActivity() {
 
 
     private fun constructPrompt(
-        brand1: String, model1: String, subCat1: String, year1: Int,
-        brand2: String, model2: String, subCat2: String, year2: Int,
+        brand1: String, model1: String, year1: Int,
+        brand2: String, model2: String, year2: Int,
         handicap: Int, category: String, moreInfo: String
     ): String {
         val model1Full = "$brand1 $model1 ($year1)"

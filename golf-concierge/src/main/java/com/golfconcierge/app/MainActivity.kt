@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupHandicapSeekBar() {
         handicapSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                handicapTitle.text = "Handicap: $progress"
+                "Handicap: $progress".also { handicapTitle.text = it }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
