@@ -1,105 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".CompareActivity">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="?attr/actionBarSize"
+            app:title="Compare Clubs"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:titleTextColor="?attr/colorOnPrimary"
+            android:background="?attr/colorPrimary" />
 
-            <TextView
-                android:id="@+id/summaryTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"
-                android:text="Summary" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/categoryChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                app:chipBackgroundColor="@color/design_default_color_secondary"
-                android:textColor="@color/design_default_color_on_secondary"
-                android:layout_marginBottom="16dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Select comparison brand:" />
-
-            <Spinner
-                android:id="@+id/brandSpinner2"
-                android:minHeight="48dp"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginTop="16dp"
-                android:text="Select comparison model:" />
-
-            <Spinner
-                android:id="@+id/modelSpinner2"
-                android:minHeight="48dp"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingTop="24dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <Button
-                    android:id="@+id/backButton"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/summaryTextView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Back" />
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:layout_marginBottom="16dp"
+                    tools:text="Comparing against: Ping G430 (2023) [GI]" />
 
-                <Space
-                    android:layout_width="12dp"
-                    android:layout_height="1dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/brandTextInputLayout2"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select comparison brand">
 
-                <Button
+                    <AutoCompleteTextView
+                        android:id="@+id/brandAutoCompleteTextView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/modelTextInputLayout2"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Select comparison model">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/modelAutoCompleteTextView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/recommendButton"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="32dp"
                     android:text="Get Recommendation" />
+
             </LinearLayout>
+        </ScrollView>
 
-        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/loadingIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/loadingIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -3,19 +3,20 @@ package com.golfconcierge.app
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ProgressBar
-import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.golfconcierge.app.data.Brand
 import com.golfconcierge.app.data.InMemoryGolfRepository
 import com.golfconcierge.app.data.Model
-import com.golfconcierge.app.ui.adapters.BrandSpinnerAdapter
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Dispatchers
@@ -25,12 +26,11 @@ import kotlinx.coroutines.withContext
 class CompareActivity : AppCompatActivity() {
 
     // Views
-    private lateinit var brandSpinner2: Spinner
-    private lateinit var modelSpinner2: Spinner
+    private lateinit var brandAutoCompleteTextView2: AutoCompleteTextView
+    private lateinit var modelAutoCompleteTextView2: AutoCompleteTextView
     private lateinit var recommendButton: Button
     private lateinit var summaryTextView: TextView
     private lateinit var loadingIndicator: ProgressBar
-    private lateinit var backButton: Button
 
     // Data from Intent
     private var handicap: Int = 0
@@ -41,17 +41,25 @@ class CompareActivity : AppCompatActivity() {
     private lateinit var model1SubCategory: String
     private lateinit var moreInfo: String
 
+    // State holders
+    private var modelsForCurrentBrand2: List<Model> = emptyList()
+    private var selectedModel2: Model? = null
+    private var selectedBrand2: Brand? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compare)
 
         // Initialize Views
-        brandSpinner2 = findViewById(R.id.brandSpinner2)
-        modelSpinner2 = findViewById(R.id.modelSpinner2)
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        brandAutoCompleteTextView2 = findViewById(R.id.brandAutoCompleteTextView2)
+        modelAutoCompleteTextView2 = findViewById(R.id.modelAutoCompleteTextView2)
         recommendButton = findViewById(R.id.recommendButton)
         summaryTextView = findViewById(R.id.summaryTextView)
         loadingIndicator = findViewById(R.id.loadingIndicator)
-        backButton = findViewById(R.id.backButton)
 
         // Get data from MainActivity Intent
         handicap = intent.getIntExtra("handicap", 0)
@@ -67,88 +75,103 @@ class CompareActivity : AppCompatActivity() {
 
         InMemoryGolfRepository.initialize(applicationContext)
 
-        setupBrandSpinner2()
+        setupBrandDropdown()
+        setupRecommendButton()
+    }
 
-        backButton.setOnClickListener {
-            finish()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle arrow click here
+        if (item.itemId == android.R.id.home) {
+            finish() // close this activity and return to preview activity (if there is any)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupBrandDropdown() {
+        val brands = InMemoryGolfRepository.getBrands()
+        val brandNames = brands.map { it.name }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, brandNames)
+        brandAutoCompleteTextView2.setAdapter(adapter)
+
+        brandAutoCompleteTextView2.setOnItemClickListener { parent, _, position, _ ->
+            val selectedBrandName = parent.getItemAtPosition(position) as? String
+            selectedBrand2 = brands.find { it.name == selectedBrandName }
+            setupModelDropdown(selectedBrand2?.name)
+        }
+    }
+
+    private fun setupModelDropdown(brandName: String?) {
+        clearModelSelection()
+        if (brandName == null) {
+            modelAutoCompleteTextView2.setAdapter(null)
+            return
         }
 
+        val allModelsForBrand = InMemoryGolfRepository.getModelsForBrand(brandName, category)
+        modelsForCurrentBrand2 = allModelsForBrand.filterNot { model ->
+            model.name == model1Name &&
+                    model.year == model1Year &&
+                    model.subCategory.equals(model1SubCategory, ignoreCase = true)
+        }
+
+        val modelDisplayItems = modelsForCurrentBrand2.map {
+            val subCatDisplay = it.subCategory.uppercase()
+            "${it.name} (${it.year}) [$subCatDisplay]"
+        }
+        val modelAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, modelDisplayItems)
+        modelAutoCompleteTextView2.setAdapter(modelAdapter)
+
+        modelAutoCompleteTextView2.setOnItemClickListener { _, _, position, _ ->
+            selectedModel2 = if (position < modelsForCurrentBrand2.size) modelsForCurrentBrand2[position] else null
+        }
+    }
+
+    private fun clearModelSelection() {
+        modelAutoCompleteTextView2.setText("", false)
+        modelAutoCompleteTextView2.setAdapter(null)
+        modelsForCurrentBrand2 = emptyList()
+        selectedModel2 = null
+    }
+
+    private fun setupRecommendButton() {
         recommendButton.setOnClickListener {
-            val selectedModel2 = getSelectedModel2()
-            if (selectedModel2 != null) {
-                val prompt = constructPrompt(
-                    brand1Name, model1Name, model1SubCategory, model1Year,
-                    (brandSpinner2.selectedItem as Brand).name, selectedModel2.name, selectedModel2.subCategory, selectedModel2.year,
-                    handicap, category, moreInfo
-                )
+            if (selectedBrand2 == null || selectedModel2 == null) {
+                Toast.makeText(this, "Please select a brand and model to compare.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-                lifecycleScope.launch {
-                    recommendButton.isEnabled = false
-                    loadingIndicator.visibility = View.VISIBLE
-                    try {
-                        val result = withContext(Dispatchers.IO) {
-                            val geminiRepo = (application as GolfApplication).geminiRepository
-                            geminiRepo.generateContent(prompt)
-                        }
+            val prompt = constructPrompt(
+                brand1Name, model1Name, model1SubCategory, model1Year,
+                selectedBrand2!!.name, selectedModel2!!.name, selectedModel2!!.subCategory, selectedModel2!!.year,
+                handicap, category, moreInfo
+            )
 
-                        Log.d("JSON_DEBUG", "Raw JSON: $result")
-                        val comparisonResult = parseResponse(result)
-                        Log.d("JSON_DEBUG", "Parsed Result: $comparisonResult")
-
-                        val intent = Intent(this@CompareActivity, ResponseActivity::class.java).apply {
-                            putExtra("comparisonResult", comparisonResult)
-                        }
-                        startActivity(intent)
-                    } finally {
-                        recommendButton.isEnabled = true
-                        loadingIndicator.visibility = View.GONE
+            lifecycleScope.launch {
+                recommendButton.isEnabled = false
+                loadingIndicator.visibility = View.VISIBLE
+                try {
+                    val result = withContext(Dispatchers.IO) {
+                        val geminiRepo = (application as GolfApplication).geminiRepository
+                        geminiRepo.generateContent(prompt)
                     }
+
+                    val comparisonResult = parseResponse(result)
+                    val intent = Intent(this@CompareActivity, ResponseActivity::class.java).apply {
+                        putExtra("comparisonResult", comparisonResult)
+                    }
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Log.e("CompareActivity", "Error during Gemini call", e)
+                    Toast.makeText(this@CompareActivity, "An error occurred. Please try again.", Toast.LENGTH_LONG).show()
+                } finally {
+                    recommendButton.isEnabled = true
+                    loadingIndicator.visibility = View.GONE
                 }
             }
         }
     }
 
-    private fun setupBrandSpinner2() {
-        val brands = InMemoryGolfRepository.getBrands()
-        val adapter = BrandSpinnerAdapter(this, brands)
-        brandSpinner2.adapter = adapter
-
-        brandSpinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedBrand = brands[position]
-                setupModelSpinner2(selectedBrand.name)
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                modelSpinner2.adapter = null
-            }
-        }
-    }
-
-    private fun setupModelSpinner2(brandName: String) {
-        val allModelsForBrand = InMemoryGolfRepository.getModelsForBrand(brandName, category)
-        val filteredModels = allModelsForBrand.filterNot { model ->
-            model.name == model1Name &&
-                    model.year == model1Year &&
-                    model.subCategory.equals(model1SubCategory, ignoreCase = true)
-        }
-        val modelDisplayItems = filteredModels.map {
-            val subCatDisplay = it.subCategory.uppercase()
-            "${it.name} (${it.year}) [$subCatDisplay]"
-        }
-        val modelAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, modelDisplayItems)
-        modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        modelSpinner2.adapter = modelAdapter
-        modelSpinner2.tag = filteredModels
-    }
-
-    private fun getSelectedModel2(): Model? {
-        val modelsFromTag = modelSpinner2.tag as? List<*> ?: return null
-        val selectedPosition = modelSpinner2.selectedItemPosition
-        if (selectedPosition < 0 || selectedPosition >= modelsFromTag.size) {
-            return null
-        }
-        return modelsFromTag[selectedPosition] as Model?
-    }
 
     private fun constructPrompt(
         brand1: String, model1: String, subCat1: String, year1: Int,

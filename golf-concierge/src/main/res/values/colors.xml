@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Primary Color Palette -->
+    <color name="primary">#2c3e50</color> <!-- Dark Slate Blue -->
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#bdc3c7</color> <!-- Light Grayish Blue -->
+    <color name="onPrimaryContainer">#2c3e50</color>
+
+    <!-- Secondary Color Palette -->
+    <color name="secondary">#1abc9c</color> <!-- Teal/Green Accent -->
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#e8f8f5</color> <!-- Very Light Teal -->
+    <color name="onSecondaryContainer">#1abc9c</color>
+
+    <!-- General UI Colors -->
+    <color name="background">#ecf0f1</color> <!-- Light Gray Background -->
+    <color name="onBackground">#2c3e50</color>
+    <color name="surface">#FFFFFF</color> <!-- Card Backgrounds, etc. -->
+    <color name="onSurface">#2c3e50</color>
+    <color name="surfaceVariant">#bdc3c7</color>
+    <color name="onSurfaceVariant">#2c3e50</color>
+    <color name="outline">#bdc3c7</color>
+
+    <!-- Standard Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

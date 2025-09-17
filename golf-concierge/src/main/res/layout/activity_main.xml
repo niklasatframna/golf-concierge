@@ -1,110 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
-        <!-- Handicap Section -->
-        <TextView
-            android:id="@+id/handicapTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Handicap: 0"
-            android:textSize="18sp" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name"
+            app:titleTextColor="?attr/colorOnPrimary"
+            android:background="?attr/colorPrimary" />
 
-        <SeekBar
-            android:id="@+id/handicapSeekBar"
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="36"
-            android:progress="18"
-            android:layout_marginTop="8dp"/>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Category Section with ChipGroup -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Category:"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"/>
+            <!-- Handicap Section -->
+            <TextView
+                android:id="@+id/handicapTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Handicap: 18"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/categoryChipGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:selectionRequired="true"
-            android:layout_marginTop="8dp">
-            <!-- Chips will be added programmatically -->
-        </com.google.android.material.chip.ChipGroup>
+            <SeekBar
+                android:id="@+id/handicapSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="36"
+                android:progress="18"
+                android:layout_marginTop="8dp"/>
 
-        <!-- Brand Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Brand:"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"/>
+            <!-- Category Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Category"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:layout_marginTop="24dp"/>
 
-        <Spinner
-            android:id="@+id/brandSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:minHeight="48dp"/>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categoryChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:layout_marginTop="8dp">
+                <!-- Chips will be added programmatically -->
+            </com.google.android.material.chip.ChipGroup>
 
-        <!-- Model Section -->
-        <TextView
-            android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Model:"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
+            <!-- Brand Section -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/brandTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Brand"
+                android:layout_marginTop="16dp">
 
-        <Spinner
-            android:id="@+id/modelSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:minHeight="48dp"/>
+                <AutoCompleteTextView
+                    android:id="@+id/brandAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
 
-        <!-- More Info Section -->
-        <EditText
-            android:id="@+id/moreInfoEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Any other preferences? (Optional)"
-            android:inputType="textMultiLine"
-            android:minLines="2"
-            android:layout_marginTop="16dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Continue Button -->
-        <Button
-            android:id="@+id/continueButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"/>
+            <!-- Model Section -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/modelTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Model"
+                android:layout_marginTop="16dp">
 
-        <!-- About -->
-        <TextView
-            android:id="@+id/aboutTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:padding="8dp"
-            android:text="About this App"
-            android:textColor="?attr/colorPrimary" />
+                <AutoCompleteTextView
+                    android:id="@+id/modelAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
 
-    </LinearLayout>
-</ScrollView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- More Info Section -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/moreInfoTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Any other preferences? (Optional)"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/moreInfoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:gravity="top"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Continue Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"/>
+
+            <!-- About -->
+            <TextView
+                android:id="@+id/aboutTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:padding="8dp"
+                android:text="About this App"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorSecondary" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
