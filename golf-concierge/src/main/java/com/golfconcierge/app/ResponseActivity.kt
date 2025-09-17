@@ -2,7 +2,6 @@ package com.golfconcierge.app
 
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.text.SpannableStringBuilder
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -38,15 +37,17 @@ class ResponseActivity : AppCompatActivity() {
                 // Build Pros section
                 prosBuilder.bold { append(modelName) }
                 prosBuilder.append("\n")
-                // Format the bullet points
-                prosBuilder.append(prosConsItem.pros.replace("- ", "\t• ").trim())
+                // Join the list of pros into a single bulleted string
+                val prosString = prosConsItem.pros.joinToString(separator = "\n") { "\t• $it" }
+                prosBuilder.append(prosString)
                 prosBuilder.append("\n\n")
 
                 // Build Cons section
                 consBuilder.bold { append(modelName) }
                 consBuilder.append("\n")
-                // Format the bullet points
-                consBuilder.append(prosConsItem.cons.replace("- ", "\t• ").trim())
+                // Join the list of cons into a single bulleted string
+                val consString = prosConsItem.cons.joinToString(separator = "\n") { "\t• $it" }
+                consBuilder.append(consString)
                 consBuilder.append("\n\n")
             }
 

@@ -22,7 +22,7 @@ data class ProsConsHolder(
 // This class holds the specific pros and cons for a single model.
 data class ProsConsItem(
     @SerializedName("pros")
-    val pros: String = "",
+    val pros: List<String> = emptyList(),
     @SerializedName("cons")
-    val cons: String = ""
+    val cons: List<String> = emptyList()
 ) : Serializable
