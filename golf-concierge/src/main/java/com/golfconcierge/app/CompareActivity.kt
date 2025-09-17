@@ -30,6 +30,7 @@ class CompareActivity : AppCompatActivity() {
     private lateinit var recommendButton: Button
     private lateinit var summaryTextView: TextView
     private lateinit var loadingIndicator: ProgressBar
+    private lateinit var backButton: Button
 
     // Data from Intent
     private var handicap: Int = 0
@@ -50,6 +51,7 @@ class CompareActivity : AppCompatActivity() {
         recommendButton = findViewById(R.id.recommendButton)
         summaryTextView = findViewById(R.id.summaryTextView)
         loadingIndicator = findViewById(R.id.loadingIndicator)
+        backButton = findViewById(R.id.backButton)
 
         // Get data from MainActivity Intent
         handicap = intent.getIntExtra("handicap", 0)
@@ -66,6 +68,10 @@ class CompareActivity : AppCompatActivity() {
         InMemoryGolfRepository.initialize(applicationContext)
 
         setupBrandSpinner2()
+
+        backButton.setOnClickListener {
+            finish()
+        }
 
         recommendButton.setOnClickListener {
             val selectedModel2 = getSelectedModel2()
