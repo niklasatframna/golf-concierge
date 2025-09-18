@@ -27,6 +27,7 @@ android {
 
         // Expose the API key as a BuildConfig field
         buildConfigField("String", "GEMINI_API_KEY", "\"${localProperties.getProperty("GEMINI_API_KEY")}\"")
+        buildConfigField("String", "OPENAI_API_KEY", "\"${localProperties.getProperty("OPENAI_API_KEY")}\"")
     }
 
     buildTypes {
@@ -63,6 +64,8 @@ android {
 }
 
 dependencies {
+    implementation("io.ktor:ktor-client-okhttp:2.3.9")
+    implementation("com.aallam.openai:openai-client:3.8.0")
     implementation("com.google.genai:google-genai:1.16.0")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
