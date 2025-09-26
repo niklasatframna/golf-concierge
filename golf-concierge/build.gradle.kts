@@ -14,7 +14,7 @@ if (localPropertiesFile.exists()) {
 
 android {
     namespace = "com.golfconcierge.app"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.golfconcierge.app"
@@ -28,6 +28,7 @@ android {
         // Expose the API key as a BuildConfig field
         buildConfigField("String", "GEMINI_API_KEY", "\"${localProperties.getProperty("GEMINI_API_KEY")}\"")
         buildConfigField("String", "OPENAI_API_KEY", "\"${localProperties.getProperty("OPENAI_API_KEY")}\"")
+        buildConfigField("String", "PERPLEXITY_API_KEY", "\"${localProperties.getProperty("PERPLEXITY_API_KEY")}\"")
     }
 
     buildTypes {

@@ -14,8 +14,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.golfconcierge.app.data.Brand
+import com.golfconcierge.app.data.GeminiRepository
+import com.golfconcierge.app.data.GenerativeAiRepository
 import com.golfconcierge.app.data.InMemoryGolfRepository
 import com.golfconcierge.app.data.Model
+import com.golfconcierge.app.data.OpenAiRepository
+import com.golfconcierge.app.data.PerplexityRepository
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -40,11 +44,15 @@ class CompareActivity : AppCompatActivity() {
     private var model1Year: Int = 0
     private lateinit var model1SubCategory: String
     private lateinit var moreInfo: String
+    private lateinit var aiProvider: String
+
 
     // State holders
     private var modelsForCurrentBrand2: List<Model> = emptyList()
     private var selectedModel2: Model? = null
     private var selectedBrand2: Brand? = null
+    private lateinit var generativeAiRepository: GenerativeAiRepository
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,15 +77,25 @@ class CompareActivity : AppCompatActivity() {
         model1Year = intent.getIntExtra("model1Year", 0)
         model1SubCategory = intent.getStringExtra("model1SubCategory") ?: ""
         moreInfo = intent.getStringExtra("moreInfo") ?: ""
+        aiProvider = intent.getStringExtra("aiProvider") ?: "Gemini"
+
 
         val summaryText = "Comparing against: $brand1Name $model1Name ($model1Year) [$model1SubCategory]"
         summaryTextView.text = summaryText
 
         InMemoryGolfRepository.initialize(applicationContext)
-
+        setupAiRepository()
         setupBrandDropdown()
         setupRecommendButton()
     }
+    private fun setupAiRepository() {
+        generativeAiRepository = when (aiProvider) {
+            "OpenAI" -> OpenAiRepository()
+            "Perplexity" -> PerplexityRepository()
+            else -> GeminiRepository() // Default to Gemini
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle arrow click here
@@ -153,8 +171,7 @@ class CompareActivity : AppCompatActivity() {
                 loadingIndicator.visibility = View.VISIBLE
                 try {
                     val result = withContext(Dispatchers.IO) {
-                        val geminiRepo = (application as GolfApplication).geminiRepository
-                        geminiRepo.generateContent(prompt)
+                        generativeAiRepository.generateContent(prompt)
                     }
 
                     val comparisonResult = parseResponse(result)

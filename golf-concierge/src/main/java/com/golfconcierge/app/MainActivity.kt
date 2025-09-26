@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var modelAutoCompleteTextView: AutoCompleteTextView
     private lateinit var moreInfoEditText: EditText
     private lateinit var continueButton: Button
+    private lateinit var aiProviderAutoCompleteTextView: AutoCompleteTextView
+
 
     // Data holders for state
     private var originalCategoryKeys: List<String> = emptyList()
@@ -49,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         modelAutoCompleteTextView = findViewById(R.id.modelAutoCompleteTextView)
         moreInfoEditText = findViewById(R.id.moreInfoEditText)
         continueButton = findViewById(R.id.continueButton)
+        aiProviderAutoCompleteTextView = findViewById(R.id.aiProviderAutoCompleteTextView)
+
 
         val initialHandicapProgress = handicapSeekBar.progress
         "Handicap: $initialHandicapProgress".also { handicapTitle.text = it }
@@ -57,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         setupHandicapSeekBar()
         setupCategoryChips()
+        setupAiProviderSpinner()
         setupContinueButton()
         setupAboutDialog()
     }
@@ -152,6 +157,14 @@ class MainActivity : AppCompatActivity() {
         modelsForCurrentBrand = emptyList()
         selectedModel = null
     }
+    private fun setupAiProviderSpinner() {
+        val aiProviders = listOf("Gemini", "OpenAI", "Perplexity")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, aiProviders)
+        aiProviderAutoCompleteTextView.setAdapter(adapter)
+        // Set a default selection
+        aiProviderAutoCompleteTextView.setText(aiProviders[0], false)
+    }
+
 
     private fun setupContinueButton() {
         continueButton.setOnClickListener {
@@ -162,6 +175,8 @@ class MainActivity : AppCompatActivity() {
     private fun handleContinueClick() {
         val handicap = handicapSeekBar.progress
         val brandName = brandAutoCompleteTextView.text.toString()
+        val aiProvider = aiProviderAutoCompleteTextView.text.toString()
+
 
         if (currentSelectedCategoryKey.isNullOrEmpty()) {
             Toast.makeText(this, "Please select a category.", Toast.LENGTH_SHORT).show()
@@ -175,6 +190,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Please select a model.", Toast.LENGTH_SHORT).show()
             return
         }
+        if (aiProvider.isEmpty()) {
+            Toast.makeText(this, "Please select an AI Provider.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
 
         val intent = Intent(this, CompareActivity::class.java).apply {
             putExtra("handicap", handicap)
@@ -184,6 +204,8 @@ class MainActivity : AppCompatActivity() {
             putExtra("model1Year", selectedModel!!.year)
             putExtra("model1SubCategory", selectedModel!!.subCategory)
             putExtra("moreInfo", moreInfoEditText.text.toString().trim())
+            putExtra("aiProvider", aiProvider)
+
         }
         startActivity(intent)
     }

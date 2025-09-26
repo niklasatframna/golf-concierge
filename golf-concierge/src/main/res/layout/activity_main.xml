@@ -119,6 +119,23 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- AI Provider Section -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aiProviderTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select AI Provider"
+                android:layout_marginTop="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/aiProviderAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Continue Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/continueButton"
