@@ -20,6 +20,10 @@ class OpenAiRepository : GenerativeAiRepository {
                     model = ModelId("gpt-3.5-turbo"),
                     messages = listOf(
                         ChatMessage(
+                            role = ChatRole.System,
+                            content = "You are a helpful assistant that responds only in valid JSON format. Do not add any conversational text or markdown formatting."
+                        ),
+                        ChatMessage(
                             role = ChatRole.User,
                             content = prompt
                         )

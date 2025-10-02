@@ -33,6 +33,10 @@ class PerplexityRepository : GenerativeAiRepository {
                     model = ModelId("sonar-pro"), // Use a Perplexity model
                     messages = listOf(
                         ChatMessage(
+                            role = ChatRole.System,
+                            content = "You are a helpful assistant that responds only in valid JSON format. Do not add any conversational text or markdown formatting."
+                        ),
+                        ChatMessage(
                             role = ChatRole.User,
                             content = prompt
                         )
